@@ -14,6 +14,8 @@ import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table (name = "tb_usario")
 public class Usuario {
@@ -26,7 +28,7 @@ public class Usuario {
 	@NotBlank (message = "Este campo é obrigatório")
 	private String nome;
 		
-	
+	@ApiModelProperty(example = "email@email.com.br")
 	@NotBlank (message = "Este campo é obrigatório")
 	@Email
 	private String usuario;
