@@ -24,7 +24,7 @@ public class SwaggerConfig {
 		return new Docket(DocumentationType.SWAGGER_2)
 		.select()
 		.apis(RequestHandlerSelectors
-		.basePackage("com.loja.shannaIntima"))
+		.basePackage("com.loja.shannaIntima.controller"))
 		.paths(PathSelectors.any())
 		.build()
 		.apiInfo(metadata())

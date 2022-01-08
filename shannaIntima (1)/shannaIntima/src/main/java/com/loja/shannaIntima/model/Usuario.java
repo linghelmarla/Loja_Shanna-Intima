@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -29,9 +30,10 @@ public class Usuario {
 	private String nome;
 		
 	@ApiModelProperty(example = "email@email.com.br")
-	@NotBlank (message = "Este campo é obrigatório")
-	@Email
+	@NotNull(message = "O atributo Usuário é Obrigatório!")
+	@Email(message = "O atributo Usuário deve ser um email válido!")
 	private String usuario;
+	
 	
 	@NotBlank (message = "Este campo é obrigatório")
 	private String senha;
