@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -106,7 +107,8 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 	 */
 
 	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+	protected void configure(HttpSecurity http ) throws Exception {
+		antMatchers(HttpMethod.OPTIONS).permitAll();
 
 		/**
 		 * antMatchers().permitAll -> Endpoint liberado de autenticação
@@ -155,5 +157,10 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().cors().and()
 				.csrf().disable();
 
+	}
+
+	private ExpressionUrlAuthorizationConfigurer<HttpSecurity>.AuthorizedUrl antMatchers(HttpMethod options) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
